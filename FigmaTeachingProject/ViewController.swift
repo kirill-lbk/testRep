@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 
 class ViewController: UIViewController {
     
@@ -26,6 +27,7 @@ class ViewController: UIViewController {
         firstButton.setTitle("Первая кнопка", for: .normal)
         firstButton.setTitleColor(.orange, for: .normal)
         firstButton.titleLabel?.font = .systemFont(ofSize: 25)
+        firstButton.addTarget(self, action: #selector(firstButtonAction), for: .touchUpInside)
         return firstButton
     }()
     
@@ -36,6 +38,7 @@ class ViewController: UIViewController {
         secondButton.setTitle("Вторая кнопка", for: .normal)
         secondButton.setTitleColor(.orange, for: .normal)
         secondButton.titleLabel?.font = .systemFont(ofSize: 25)
+        secondButton.addTarget(self, action: #selector(secondButtonAction), for: .touchUpInside)
         return secondButton
     }()
     
@@ -43,12 +46,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = .orange
+                
         self.view.addSubview(imageView)
         self.view.addSubview(titleLabel)
         self.view.addSubview(firstButton)
         self.view.addSubview(secondButton)
-        
-        
+                
         imageViewConstraints(imageView: imageView, view: view)
         titleLabelConstraints(titleLabel: titleLabel, imageView: imageView, view: view)
         firstButtonConstraints(firstButton: firstButton, titleLabel: titleLabel, view: view)
@@ -83,8 +86,18 @@ class ViewController: UIViewController {
         secondButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -60).isActive = true
         secondButton.topAnchor.constraint(equalTo: firstButton.bottomAnchor, constant: 40).isActive = true
         secondButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
-
     }
     
+    @objc func firstButtonAction() {
+        let pvc = PushedViewController()
+        self.navigationController?.pushViewController(pvc, animated: true)
+        print("First Button Clicked")
+         }
+    
+    @objc func secondButtonAction() {
+        let pvc = PresentedViewController()
+        self.navigationController?.present(pvc, animated: true, completion: nil)
+        print("Second Button Clicked")
+         }
     
 }
