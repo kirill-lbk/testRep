@@ -5,10 +5,10 @@ class PresentedViewController: UIViewController {
 
     var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Это зеленый значек с галочкой"
+        label.text = "Это контроллер запрезентился"
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = .orange
         label.font = .systemFont(ofSize: 25)
         return label
     }()
@@ -16,7 +16,7 @@ class PresentedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .orange
+        self.view.backgroundColor = .white
                 
         self.view.addSubview(titleLabel)
                 
@@ -28,7 +28,7 @@ class PresentedViewController: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 40).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
     }
    
 }
