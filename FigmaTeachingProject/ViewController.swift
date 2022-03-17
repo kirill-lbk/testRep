@@ -90,3 +90,4 @@ class ViewController: UIViewController {
 }
 
 // Проверка комита
+// Вторая проверка комита
